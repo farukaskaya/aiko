@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Aiko</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <button id="menuBtn" class="icon-btn" aria-label="Her mind">&#9776;</button>
+      <div class="who">
+        <div class="avatar" id="avatar">A</div>
+        <div>
+          <h1 id="name">Aiko</h1>
+          <div class="sub"><span id="moodLabel">content</span> &middot; <span id="moodHearts">0</span>%</div>
+        </div>
+      </div>
+      <select id="personaSelect" class="persona-select" aria-label="Personality"></select>
+      <div class="mood-meter" title="mood">
+        <div class="mood-fill" id="moodFill"></div>
+      </div>
+    </header>
+
+    <main class="chat" id="chat" aria-live="polite"></main>
+
+    <div class="typing" id="typing" hidden>
+      <span></span><span></span><span></span>
+    </div>
+
+    <form class="composer" id="composer">
+      <input id="input" type="text" placeholder="Say something to Aiko..." autocomplete="off" maxlength="2000" />
+      <button type="submit" id="send" aria-label="Send">&#10148;</button>
+    </form>
+  </div>
+
+  <aside class="panel" id="panel" hidden>
+    <div class="panel-head">
+      <h2>Her mind</h2>
+      <button class="icon-btn" id="closePanel" aria-label="Close">&#10005;</button>
+    </div>
+
+    <section>
+      <h3>Profile</h3>
+      <div class="switch-row">
+        <select id="profileSelect" aria-label="Profile"></select>
+        <button class="ghost" id="newProfileBtn" type="button">+ New</button>
+        <button class="danger" id="deleteProfileBtn" type="button" title="Delete this profile">Delete</button>
+      </div>
+    </section>
+
+    <section>
+      <h3>Personality</h3>
+      <div class="switch-row">
+        <select id="personaPanelSelect" aria-label="Personality"></select>
+        <button class="danger" id="deletePersonaBtn" type="button" title="Delete this personality">Delete</button>
+      </div>
+      <div class="switch-row">
+        <select id="presetSelect" aria-label="Preset"></select>
+        <button class="ghost" id="newPersonaBtn" type="button">+ New</button>
+      </div>
+      <p class="hint" id="personaHint"></p>
+    </section>
+
+    <section>
+      <h3>Train her personality</h3>
+      <textarea id="trainInput" rows="6" placeholder="Paste a chat log with her lines labeled, e.g.&#10;&#10;Aiko: Hey, I was hoping you would text.&#10;Me: Can we get pizza tonight?&#10;Aiko: Of course!"></textarea>
+      <div class="train-actions">
+        <label class="ghost file">Load .txt<input type="file" id="trainFile" accept=".txt,.md,text/plain" hidden /></label>
+        <button class="solid" id="trainBtn" type="button">Train</button>
+      </div>
+      <div class="train-result" id="trainResult" hidden></div>
+      <button class="danger" id="untrainBtn" type="button" hidden>Forget training</button>
+    </section>
+
+    <section>
+      <h3>Confidence over time</h3>
+      <div class="chart" id="chart"></div>
+    </section>
+
+    <section class="mood-card">
+      <h3>Mood</h3>
+      <div class="bars" id="moodBars"></div>
+    </section>
+
+    <section>
+      <h3>Facts <span id="factCount" class="count">0</span></h3>
+      <ul class="facts" id="facts"></ul>
+      <p class="empty" id="factsEmpty">Nothing yet. Tell her something about you.</p>
+    </section>
+
+    <section>
+      <h3>Conversation</h3>
+      <div class="row">
+        <span id="msgCount">0 messages</span>
+        <button class="danger" id="resetBtn" type="button">Forget everything</button>
+      </div>
+    </section>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
